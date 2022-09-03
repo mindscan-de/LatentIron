@@ -26,9 +26,11 @@
 package de.mindscan.latentiron.crawler;
 
 import java.io.IOException;
+import java.nio.file.FileSystems;
 import java.nio.file.FileVisitResult;
 import java.nio.file.FileVisitor;
 import java.nio.file.Path;
+import java.nio.file.PathMatcher;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.function.Consumer;
 
@@ -36,6 +38,9 @@ import java.util.function.Consumer;
  * 
  */
 public class MediaFileVisitor<T extends Path> implements FileVisitor<Path> {
+
+    private final PathMatcher commonVideoFileMatcher = FileSystems.getDefault().getPathMatcher( "glob:**.{webm,mkv,mp4,mp2,mpeg,mpg,avi,ts,vob}" );
+    private final PathMatcher commonImageFileMatcher = FileSystems.getDefault().getPathMatcher( "glob:**.{webp,png,jpg,jpeg,gif}" );
 
     private Consumer<Path> pathCollector;
 
@@ -52,9 +57,12 @@ public class MediaFileVisitor<T extends Path> implements FileVisitor<Path> {
     @Override
     public FileVisitResult visitFile( Path file, BasicFileAttributes attrs ) throws IOException {
 
-        // Check if things match to a media file.
-        // e.g. webm, mkv, mp4, mp2, ts, vob
-        // e.g. webp, png, jpeg, jpg, gif 
+        if (commonImageFileMatcher.matches( file )) {
+            pathCollector.accept( file );
+        }
+        if (commonVideoFileMatcher.matches( file )) {
+            pathCollector.accept( file );
+        }
 
         return FileVisitResult.CONTINUE;
     }
