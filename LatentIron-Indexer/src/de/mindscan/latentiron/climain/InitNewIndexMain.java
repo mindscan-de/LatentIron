@@ -29,6 +29,7 @@ import java.nio.file.Path;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
+import de.mindscan.latentiron.crawler.SimpleFileCrawler;
 import de.mindscan.latentiron.indexers.SimpleFileContentIndexer;
 import picocli.CommandLine;
 
@@ -42,6 +43,10 @@ public class InitNewIndexMain {
         Path indexFolder = parameters.getLabelDataFolder();
 
         Deque<Path> filesToBeIndexed = new ArrayDeque<Path>();
+        SimpleFileCrawler crawler = new SimpleFileCrawler();
+        crawler.crawl( filesToBeIndexed::add, crawlFolder );
+
+        System.out.println( String.format( "%d files found for label data index.", filesToBeIndexed.size() ) );
 
         SimpleFileContentIndexer simpleFileContentIndexer = new SimpleFileContentIndexer();
         simpleFileContentIndexer.buildIndex( filesToBeIndexed, crawlFolder, indexFolder );
