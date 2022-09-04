@@ -53,7 +53,7 @@ public class LabelDataDatabaseIndex {
      * 
      */
     public void init() {
-        // TODO Auto-generated method stub
+        // TODO Create file and directory structure and such
 
     }
 
@@ -61,7 +61,7 @@ public class LabelDataDatabaseIndex {
      * 
      */
     public void finish() {
-        // TODO Auto-generated method stub
+        // TODO write current state of the Database and the DatabaseIndex
 
     }
 
