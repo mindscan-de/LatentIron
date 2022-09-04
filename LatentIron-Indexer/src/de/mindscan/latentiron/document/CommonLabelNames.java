@@ -26,15 +26,23 @@
 package de.mindscan.latentiron.document;
 
 /**
- * 
+ * Contains the common names of all Metadata label names.
  */
 public class CommonLabelNames {
 
     public static final String FILE_SIMPLENAME = "file.simplename";
     public static final String FILE_PATH = "file.path";
     public static final String FILE_SIZE = "file.size";
+    public static final String FILE_TYPE = "file.type";
 
-    // TODO filetype, origin
+    // in case of a download a file origin would be cool, if this is somehow possible.
+
+    // TODO + maybe a classifier according to the filename 
+    // e.g. twitter, instagram, facebook, screenshot, unknown
+    // maybe some additional information can be extracted from the filename
+    // e.g. screenshot with date and time stamp info
+    public static final String FILE_ORIGIN = "file.origin";
+    public static final String FILE_DOWNLOAD_TIMSTAMP = "file.downloadts";
 
     // content descripton might be a differnent thing...
     // , caption
