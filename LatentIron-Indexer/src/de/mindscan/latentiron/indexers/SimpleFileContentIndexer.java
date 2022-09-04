@@ -35,13 +35,14 @@ import de.mindscan.latentiron.index.LabelDataDatabaseIndex;
  */
 public class SimpleFileContentIndexer implements FileContentIndexer {
 
+    private LabelDataDatabaseIndex databaseIndex;
+
     /** 
      * {@inheritDoc}
      */
     @Override
     public void buildIndex( Deque<Path> filesToBeIndexed, Path crawlFolder, Path indexFolder ) {
-        // Create a new label database (index)
-        LabelDataDatabaseIndex databaseIndex = new LabelDataDatabaseIndex( indexFolder );
+        setDatabaseIndex( new LabelDataDatabaseIndex( indexFolder ) );
 
         // where is tha base foler of the Data we are labelling
         databaseIndex.setLabelDataSourcedataFolder( crawlFolder );
@@ -74,9 +75,20 @@ public class SimpleFileContentIndexer implements FileContentIndexer {
         // Derive a document key from path
         // Create a document meta data object
 
-        // add some metadata labels 
+        // add some metadata labels
+
+        // file.size
+        // file.name
+        // file.path
+        // file.type
+        // document.key
 
         // save the meta data object to disk
+        // databaseIndex.addLabelMetaDataDocument(()
+    }
+
+    public void setDatabaseIndex( LabelDataDatabaseIndex databaseIndex ) {
+        this.databaseIndex = databaseIndex;
     }
 
 }
