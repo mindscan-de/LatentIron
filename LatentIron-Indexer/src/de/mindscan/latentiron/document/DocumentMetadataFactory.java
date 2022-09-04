@@ -32,7 +32,7 @@ import java.nio.file.Path;
 /**
  * 
  */
-public class DocumentLabelAndMetadataFactory {
+public class DocumentMetadataFactory {
 
     public static DocumentMetadata createDocumentLabelAndMetadata( DocumentId documentId, Path fileToIndex ) {
 
