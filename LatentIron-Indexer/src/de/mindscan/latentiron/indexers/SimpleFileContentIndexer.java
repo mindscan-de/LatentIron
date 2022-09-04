@@ -28,6 +28,8 @@ package de.mindscan.latentiron.indexers;
 import java.nio.file.Path;
 import java.util.Deque;
 
+import de.mindscan.latentiron.index.LabelDataDatabaseIndex;
+
 /**
  * 
  */
@@ -38,8 +40,15 @@ public class SimpleFileContentIndexer implements FileContentIndexer {
      */
     @Override
     public void buildIndex( Deque<Path> filesToBeIndexed, Path crawlFolder, Path indexFolder ) {
-        // new index
-        // do we need a Classifer?
+        // Create a new label database (index)
+        LabelDataDatabaseIndex databaseIndex = new LabelDataDatabaseIndex( indexFolder );
+
+        // where is tha base foler of the Data we are labelling
+        databaseIndex.setLabelDataSourcedataFolder( crawlFolder );
+
+        // do we need Classifers?
+
+        databaseIndex.init();
 
         // initialize index on disk
         // 
@@ -57,7 +66,7 @@ public class SimpleFileContentIndexer implements FileContentIndexer {
             }
         }
 
-        // save/finish index on disk
+        databaseIndex.finish();
 
     }
 
