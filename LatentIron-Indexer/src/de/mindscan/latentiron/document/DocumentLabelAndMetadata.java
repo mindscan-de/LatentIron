@@ -34,7 +34,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
- * 
+ * TODO: probably good idea to split this information document metadata and content metadata, which then contains the labels.
  */
 public class DocumentLabelAndMetadata {
 
@@ -123,9 +123,9 @@ public class DocumentLabelAndMetadata {
     public Map<String, String> getKeyValuesAsMap() {
         Map<String, String> result = new HashMap<>();
 
-        result.put( "file.simplename", getDocumentSimpleFilename() );
-        result.put( "file.path", getDocumentLocation() );
-        result.put( "file.size", Long.toString( getFileSize() ) );
+        result.put( CommonLabelNames.FILE_SIMPLENAME, getDocumentSimpleFilename() );
+        result.put( CommonLabelNames.FILE_PATH, getDocumentLocation() );
+        result.put( CommonLabelNames.FILE_SIZE, Long.toString( getFileSize() ) );
 
         result.putAll( labelAndMetadataMap );
 
