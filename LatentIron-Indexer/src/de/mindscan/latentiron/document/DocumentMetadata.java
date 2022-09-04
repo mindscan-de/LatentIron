@@ -36,7 +36,7 @@ import java.util.stream.Collectors;
 /**
  * TODO: probably good idea to split this information document metadata and content metadata, which then contains the labels.
  */
-public class DocumentLabelAndMetadata {
+public class DocumentMetadata {
 
     private String documentKey;
     private String documentLocation;
@@ -49,7 +49,7 @@ public class DocumentLabelAndMetadata {
     /**
      * 
      */
-    public DocumentLabelAndMetadata( String documentKey, String documentLocation, String documentSimpleFilename ) {
+    public DocumentMetadata( String documentKey, String documentLocation, String documentSimpleFilename ) {
         this.documentKey = documentKey;
         this.documentLocation = documentLocation;
         this.documentSimpleFilename = documentSimpleFilename;

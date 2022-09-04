@@ -34,13 +34,13 @@ import java.nio.file.Path;
  */
 public class DocumentLabelAndMetadataFactory {
 
-    public static DocumentLabelAndMetadata createDocumentLabelAndMetadata( DocumentId documentId, Path fileToIndex ) {
+    public static DocumentMetadata createDocumentLabelAndMetadata( DocumentId documentId, Path fileToIndex ) {
 
         String documentLocation = documentId.getDocumentLocation();
         String documentSimpleName = fileToIndex.getFileName().toString();
         String documentKey = documentId.getDocumentKey();
 
-        DocumentLabelAndMetadata documentLabelData = new DocumentLabelAndMetadata( documentKey, documentLocation, documentSimpleName );
+        DocumentMetadata documentLabelData = new DocumentMetadata( documentKey, documentLocation, documentSimpleName );
 
         try {
             documentLabelData.setFileSize( Files.size( fileToIndex ) );
