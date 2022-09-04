@@ -34,7 +34,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
- * TODO: probably good idea to split this information document metadata and content metadata, which then contains the labels.
+ * 
  */
 public class DocumentMetadata {
 
@@ -44,7 +44,7 @@ public class DocumentMetadata {
 
     private long fileSize = 0L;
 
-    private Map<String, String> labelAndMetadataMap;
+    private Map<String, String> metadataMap;
 
     /**
      * 
@@ -53,7 +53,7 @@ public class DocumentMetadata {
         this.documentKey = documentKey;
         this.documentLocation = documentLocation;
         this.documentSimpleFilename = documentSimpleFilename;
-        this.labelAndMetadataMap = new HashMap<>();
+        this.metadataMap = new HashMap<>();
     }
 
     public String getDocumentKey() {
@@ -68,16 +68,16 @@ public class DocumentMetadata {
         return documentSimpleFilename;
     }
 
-    public void addLabel( String labelKey, String labelValue ) {
-        this.labelAndMetadataMap.put( labelKey, labelValue );
+    public void addMetadata( String labelKey, String labelValue ) {
+        this.metadataMap.put( labelKey, labelValue );
     }
 
-    public void containsLabel( String labelKey ) {
-        this.labelAndMetadataMap.containsKey( labelKey );
+    public void containsMetadata( String labelKey ) {
+        this.metadataMap.containsKey( labelKey );
     }
 
-    public Map<String, String> getLabelAndMetadataMap() {
-        return labelAndMetadataMap;
+    public Map<String, String> getMetadataMap() {
+        return metadataMap;
     }
 
     /** 
@@ -103,7 +103,7 @@ public class DocumentMetadata {
         result.add( getDocumentLocation().toLowerCase() );
         result.add( Long.toString( getFileSize() ) );
 
-        List<String> collectedLowercaseValues = labelAndMetadataMap.values().stream().map( s -> s.toLowerCase() ).collect( Collectors.toList() );
+        List<String> collectedLowercaseValues = metadataMap.values().stream().map( s -> s.toLowerCase() ).collect( Collectors.toList() );
         result.addAll( collectedLowercaseValues );
 
         return result;
@@ -115,7 +115,7 @@ public class DocumentMetadata {
         result.add( getDocumentSimpleFilename() );
         result.add( getDocumentLocation() );
         result.add( Long.toString( getFileSize() ) );
-        result.addAll( labelAndMetadataMap.values() );
+        result.addAll( metadataMap.values() );
 
         return result;
     }
@@ -127,7 +127,7 @@ public class DocumentMetadata {
         result.put( CommonLabelNames.FILE_PATH, getDocumentLocation() );
         result.put( CommonLabelNames.FILE_SIZE, Long.toString( getFileSize() ) );
 
-        result.putAll( labelAndMetadataMap );
+        result.putAll( metadataMap );
 
         return result;
     }
