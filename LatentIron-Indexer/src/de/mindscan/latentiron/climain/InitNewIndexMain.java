@@ -34,6 +34,34 @@ import de.mindscan.latentiron.indexers.SimpleFileContentIndexer;
 import picocli.CommandLine;
 
 /**
+ * Steps of 
+ * 
+ * ---- Metadata ----
+ * 1. InitNewIndexMain
+ * 2. Update File Metadata, with additional information and classifiers
+ *    - maybe with re scan, if files are added removed, or moved
+ *    - maybe implement some add/move/remove operations on file basis.
+ *    - maybe use first 4k hash value / to identify move op etc.
+ *    - also simple filename / filesize are also good indicators
+ * 3. Build File Metadata index and inverse file metadata index
+ * 
+ * 
+ * --------------------------------------------------------
+ * Use metadata index as base for content/document labeling
+ * --------------------------------------------------------
+ * 
+ * ---- Content data ----
+ * X+1 Update Content Labels, with additional information
+ * X+2 Build content labels
+ * 
+ * 
+ * --------------------------------------------------------
+ * Use the content/labels to build collections for datasets
+ * --------------------------------------------------------
+ * 
+ * ---- Collections ----
+ * add / remove from collection / forward
+ * ----
  * 
  */
 public class InitNewIndexMain {
