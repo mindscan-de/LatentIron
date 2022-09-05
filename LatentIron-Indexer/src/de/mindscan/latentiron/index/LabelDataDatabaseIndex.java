@@ -34,6 +34,8 @@ public class LabelDataDatabaseIndex {
 
     private Path indexFolder;
 
+    // TODO: work with the meta data index and the inverse metadata index
+
     /**
      * @param indexFolder
      */
@@ -54,7 +56,6 @@ public class LabelDataDatabaseIndex {
      */
     public void init() {
         // TODO Create file and directory structure and such
-
     }
 
     /**
@@ -62,7 +63,20 @@ public class LabelDataDatabaseIndex {
      */
     public void finish() {
         // TODO write current state of the Database and the DatabaseIndex
+    }
 
+    /**
+     * @return
+     */
+    public Object getInverseMetadataTrigramIndex() {
+        return null;
+    }
+
+    /**
+     * @return
+     */
+    public Object getMetadataCache() {
+        return null;
     }
 
 }
