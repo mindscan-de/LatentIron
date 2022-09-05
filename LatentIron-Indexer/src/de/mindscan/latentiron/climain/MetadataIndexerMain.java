@@ -25,6 +25,12 @@
  */
 package de.mindscan.latentiron.climain;
 
+import java.nio.file.Path;
+import java.util.ArrayDeque;
+import java.util.Deque;
+
+import de.mindscan.latentiron.crawler.MetaDataFileCrawler;
+import de.mindscan.latentiron.indexers.MetadataFileIndexer;
 import picocli.CommandLine;
 
 /**
@@ -33,6 +39,18 @@ import picocli.CommandLine;
 public class MetadataIndexerMain {
 
     public void run( MetadataIndexerParameters parameters ) {
+        Path crawlFolder = parameters.getCrawlFolder();
+        Path indexFolder = parameters.getLabelDataFolder();
+
+        Deque<Path> filesToBeIndexed = new ArrayDeque<Path>();
+
+        MetaDataFileCrawler metaIndexCrawler = new MetaDataFileCrawler();
+        metaIndexCrawler.crawl( filesToBeIndexed::add, crawlFolder );
+
+        System.out.println( String.format( "%d files found for meta data indexing.", filesToBeIndexed.size() ) );
+
+        MetadataFileIndexer metadataIndexer = new MetadataFileIndexer();
+        metadataIndexer.buildIndex( filesToBeIndexed, crawlFolder, indexFolder );
 
     }
 
