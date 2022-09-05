@@ -27,6 +27,8 @@ package de.mindscan.latentiron.index;
 
 import java.nio.file.Path;
 
+import de.mindscan.latentiron.index.cache.MetadataCache;
+
 /**
  * 
  */
@@ -75,7 +77,7 @@ public class LabelDataDatabaseIndex {
     /**
      * @return
      */
-    public Object getMetadataCache() {
+    public MetadataCache getMetadataCache() {
         return null;
     }
 
