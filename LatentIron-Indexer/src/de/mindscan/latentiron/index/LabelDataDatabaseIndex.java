@@ -28,6 +28,7 @@ package de.mindscan.latentiron.index;
 import java.nio.file.Path;
 
 import de.mindscan.latentiron.index.cache.MetadataCache;
+import de.mindscan.latentiron.index.trigram.InverseMetadataTrigramIndex;
 
 /**
  * 
@@ -37,8 +38,7 @@ public class LabelDataDatabaseIndex {
     private Path indexFolder;
 
     private final MetadataCache theMetadataCache;
-    // TODO
-    // private final InverseMetadataTrigramIndex theInverseMetadataTrigramIndex;
+    private final InverseMetadataTrigramIndex theInverseMetadataTrigramIndex;
 
     // TODO: work with the meta data index and the inverse metadata index
 
@@ -48,6 +48,7 @@ public class LabelDataDatabaseIndex {
     public LabelDataDatabaseIndex( Path indexFolder ) {
         this.indexFolder = indexFolder;
         theMetadataCache = new MetadataCache( indexFolder );
+        theInverseMetadataTrigramIndex = new InverseMetadataTrigramIndex( indexFolder );
     }
 
     /**
@@ -71,16 +72,10 @@ public class LabelDataDatabaseIndex {
         // TODO write current state of the Database and the DatabaseIndex
     }
 
-    /**
-     * @return
-     */
-    public Object getInverseMetadataTrigramIndex() {
-        return null;
+    public InverseMetadataTrigramIndex getInverseMetadataTrigramIndex() {
+        return theInverseMetadataTrigramIndex;
     }
 
-    /**
-     * @return
-     */
     public MetadataCache getMetadataCache() {
         return theMetadataCache;
     }
