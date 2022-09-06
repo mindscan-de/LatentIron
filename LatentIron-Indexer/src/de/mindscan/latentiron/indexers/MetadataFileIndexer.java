@@ -28,7 +28,9 @@ package de.mindscan.latentiron.indexers;
 import java.nio.file.Path;
 import java.util.Collection;
 import java.util.Deque;
+import java.util.Set;
 
+import de.mindscan.latentiron.common.SimpleWordUtils;
 import de.mindscan.latentiron.document.DocumentId;
 import de.mindscan.latentiron.document.DocumentIdFactory;
 import de.mindscan.latentiron.document.DocumentMetadata;
@@ -76,8 +78,7 @@ public class MetadataFileIndexer implements FileContentIndexer {
         // get all "values" and treat them as words
         Collection<String> uniqueWordlist = documentMetaData.getAllValuesLowercase();
 
-        // TODO: 
-        // Set<String> uniqueTrigramlist = SimpleWordUtils.getUniqueTrigramsFromWordList( uniqueWordlist );
+        Set<String> uniqueTrigramlist = SimpleWordUtils.getUniqueTrigramsFromWordList( uniqueWordlist );
 
         // TODO: 
         // index.getInverseMetadataTrigramIndex().addTrigramsForMetadata( documentId, uniqueTrigramlist );
