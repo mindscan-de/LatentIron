@@ -36,6 +36,10 @@ public class LabelDataDatabaseIndex {
 
     private Path indexFolder;
 
+    private final MetadataCache theMetadataCache;
+    // TODO
+    // private final InverseMetadataTrigramIndex theInverseMetadataTrigramIndex;
+
     // TODO: work with the meta data index and the inverse metadata index
 
     /**
@@ -43,7 +47,7 @@ public class LabelDataDatabaseIndex {
      */
     public LabelDataDatabaseIndex( Path indexFolder ) {
         this.indexFolder = indexFolder;
-
+        theMetadataCache = new MetadataCache( indexFolder );
     }
 
     /**
@@ -78,7 +82,7 @@ public class LabelDataDatabaseIndex {
      * @return
      */
     public MetadataCache getMetadataCache() {
-        return null;
+        return theMetadataCache;
     }
 
 }
