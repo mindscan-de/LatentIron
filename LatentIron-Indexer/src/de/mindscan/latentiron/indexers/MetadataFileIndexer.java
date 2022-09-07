@@ -50,8 +50,7 @@ public class MetadataFileIndexer implements FileContentIndexer {
     public void buildIndex( Deque<Path> filesToBeIndexed, Path crawlFolder, Path indexFolder ) {
         setIndex( new LabelDataDatabaseIndex( indexFolder ) );
 
-        // TODO
-        // index.getInverseMetadataTrigramIndex().init();
+        index.getInverseMetadataTrigramIndex().init();
 
         for (Path fileToIndex : filesToBeIndexed) {
             try {
@@ -62,8 +61,7 @@ public class MetadataFileIndexer implements FileContentIndexer {
             }
         }
 
-        // TODO
-        // index.getInverseMetadataTrigramIndex().save();
+        index.getInverseMetadataTrigramIndex().save();
     }
 
     private void updateMetaIndexWithSingleFile( Path fileToIndex, Path crawlFolder, Path indexFolder ) {
@@ -80,8 +78,7 @@ public class MetadataFileIndexer implements FileContentIndexer {
 
         Set<String> uniqueTrigramlist = SimpleWordUtils.getUniqueTrigramsFromWordList( uniqueWordlist );
 
-        // TODO: 
-        // index.getInverseMetadataTrigramIndex().addTrigramsForMetadata( documentId, uniqueTrigramlist );
+        index.getInverseMetadataTrigramIndex().addTrigramsForMetadata( documentId, uniqueTrigramlist );
     }
 
     private String extractDocumentKeyFromPath( Path fileToIndex ) {
