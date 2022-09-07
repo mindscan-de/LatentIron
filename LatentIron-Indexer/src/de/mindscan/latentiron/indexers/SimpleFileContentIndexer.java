@@ -28,6 +28,10 @@ package de.mindscan.latentiron.indexers;
 import java.nio.file.Path;
 import java.util.Deque;
 
+import de.mindscan.latentiron.document.DocumentId;
+import de.mindscan.latentiron.document.DocumentIdFactory;
+import de.mindscan.latentiron.document.DocumentMetadata;
+import de.mindscan.latentiron.document.DocumentMetadataFactory;
 import de.mindscan.latentiron.index.LabelDataDatabaseIndex;
 
 /**
@@ -72,7 +76,9 @@ public class SimpleFileContentIndexer implements FileContentIndexer {
     }
 
     private void updateIndexWithSingleFile( Path fileToIndex, Path crawlFolder, Path indexFolder ) {
-        // Derive a document key from path
+        DocumentId documentId = DocumentIdFactory.createDocumentID( fileToIndex, crawlFolder );
+        DocumentMetadata documentMetaData = DocumentMetadataFactory.createDocumentLabelAndMetadata( documentId, fileToIndex );
+
         // Create a document meta data object
 
         // add some metadata labels
@@ -83,8 +89,11 @@ public class SimpleFileContentIndexer implements FileContentIndexer {
         // file.type
         // document.key
 
+        // getClassifier.classify(documentid, documentmetadata, filetoindex);
+        // getClassifier,classify(documentid, documentmetadata, uniqueWordlist);
+
         // save the meta data object to disk
-        // databaseIndex.addLabelMetaDataDocument(()
+        databaseIndex.getMetadataCache().addDocumentMetadata( documentId, documentMetaData );
     }
 
     public void setDatabaseIndex( LabelDataDatabaseIndex databaseIndex ) {
