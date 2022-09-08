@@ -82,7 +82,7 @@ public class SimpleFileContentIndexer implements FileContentIndexer {
         // Create a document meta data object
 
         // add some metadata labels
-        // file.type (image, video, data)
+        // file.type (image, video, data, image.screenshot)
         // file.date
         // file.time
         // file.checksum / content checksum
