@@ -29,6 +29,6 @@ package de.mindscan.latentiron.climain;
  * 
  */
 public class DefaultValues {
-    public final static String CRAWL_FOLDER_DEFAULT = "Y:\\KI-Dataset\\UkraineWar";
-    public final static String LABEL_FOLDER_DEFAULT = "Y:\\KI-Dataset\\UkraineWarLabels";
+    public final static String CRAWL_FOLDER_DEFAULT = "Y:\\KI-Dataset\\UkraineWar\\Data";
+    public final static String LABEL_FOLDER_DEFAULT = "Y:\\KI-Dataset\\UkraineWar\\Labels";
 }
