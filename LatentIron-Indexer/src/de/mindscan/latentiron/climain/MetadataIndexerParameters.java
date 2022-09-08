@@ -35,10 +35,10 @@ import picocli.CommandLine.Option;
  */
 public class MetadataIndexerParameters implements Callable<Integer> {
 
-    @Option( names = CommonParameters.crawlFolder, defaultValue = "", description = "The folder, where your data to label is located." )
+    @Option( names = CommonParameters.crawlFolder, defaultValue = DefaultValues.LABEL_FOLDER_DEFAULT, description = "The folder, where your data to label is located." )
     private Path crawlFolder;
 
-    @Option( names = CommonParameters.labelDataFolder, defaultValue = "", description = "The folder, where you want to keep the data labels." )
+    @Option( names = CommonParameters.labelDataFolder, defaultValue = DefaultValues.LABEL_FOLDER_DEFAULT, description = "The folder, where you want to keep the data labels." )
     private Path labelDataFolder;
 
     /** 
