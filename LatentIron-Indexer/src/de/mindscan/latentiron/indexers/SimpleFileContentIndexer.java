@@ -82,11 +82,16 @@ public class SimpleFileContentIndexer implements FileContentIndexer {
         // Create a document meta data object
 
         // add some metadata labels
-
-        // file.size
-        // file.name
-        // file.path
-        // file.type
+        // file.type (image, video, data)
+        // file.date
+        // file.time
+        // file.checksum / content checksum
+        // file.timestamp
+        // file.originalname
+        // file.originaltimestamp
+        // file.createddate
+        // file.modifieddate
+        // 
         // document.key
 
         // getClassifier.classify(documentid, documentmetadata, filetoindex);
