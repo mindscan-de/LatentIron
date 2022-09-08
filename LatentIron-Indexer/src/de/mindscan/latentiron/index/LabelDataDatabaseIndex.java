@@ -40,6 +40,10 @@ public class LabelDataDatabaseIndex {
     private final MetadataCache theMetadataCache;
     private final InverseMetadataTrigramIndex theInverseMetadataTrigramIndex;
 
+    // TODO what to continue next...
+    // private final ContentLabelCache theContentLabelCache;
+    // private final InverseContentLabelTrigramIndex theInverseContentLabelTrigramIndex;
+
     // TODO: work with the meta data index and the inverse metadata index
 
     /**
