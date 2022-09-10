@@ -28,6 +28,7 @@ package de.mindscan.latentiron.index;
 import java.nio.file.Path;
 
 import de.mindscan.latentiron.index.cache.MetadataCache;
+import de.mindscan.latentiron.index.hfb.InverseMetadataHFBFilterIndex;
 import de.mindscan.latentiron.index.trigram.InverseMetadataTrigramIndex;
 
 /**
@@ -39,6 +40,7 @@ public class LabelDataDatabaseIndex {
 
     private final MetadataCache theMetadataCache;
     private final InverseMetadataTrigramIndex theInverseMetadataTrigramIndex;
+    private final InverseMetadataHFBFilterIndex theInverseMetadataHFBFilterIndex;
 
     // TODO what to continue next...
     // private final ContentLabelCache theContentLabelCache;
@@ -53,6 +55,7 @@ public class LabelDataDatabaseIndex {
         this.indexFolder = indexFolder;
         theMetadataCache = new MetadataCache( indexFolder );
         theInverseMetadataTrigramIndex = new InverseMetadataTrigramIndex( indexFolder );
+        theInverseMetadataHFBFilterIndex = new InverseMetadataHFBFilterIndex( indexFolder );
     }
 
     /**
@@ -76,12 +79,25 @@ public class LabelDataDatabaseIndex {
         // TODO write current state of the Database and the DatabaseIndex
     }
 
+    /**
+     * @return the meta data cache access (document id -> metadata)
+     */
+    public MetadataCache getMetadataCache() {
+        return theMetadataCache;
+    }
+
+    /**
+     * @return the (inverse) metadata trigram index access (trigram -> document id)
+     */
     public InverseMetadataTrigramIndex getInverseMetadataTrigramIndex() {
         return theInverseMetadataTrigramIndex;
     }
 
-    public MetadataCache getMetadataCache() {
-        return theMetadataCache;
+    /**
+     * @return the (inverse) metadata trigram index filter access (trigram -> hfb filter bank)
+     */
+    public InverseMetadataHFBFilterIndex getInverseMetadataHFBFilterIndex() {
+        return theInverseMetadataHFBFilterIndex;
     }
 
 }
