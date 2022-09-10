@@ -31,4 +31,5 @@ package de.mindscan.latentiron.climain;
 public class DefaultValues {
     public final static String CRAWL_FOLDER_DEFAULT = "Y:\\KI-Dataset\\UkraineWar\\Data";
     public final static String LABEL_FOLDER_DEFAULT = "Y:\\KI-Dataset\\UkraineWar\\Labels";
+    public final static String INVERSE_METADATA_INDEX_FOLDER = "Y:\\KI-Dataset\\UkraineWar\\Labels\\" + "inverseMetadataTrigram.index";
 }
