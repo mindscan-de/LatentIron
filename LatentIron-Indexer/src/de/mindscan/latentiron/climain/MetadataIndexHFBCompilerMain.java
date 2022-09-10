@@ -25,6 +25,11 @@
  */
 package de.mindscan.latentiron.climain;
 
+import java.nio.file.Path;
+import java.util.ArrayDeque;
+import java.util.Deque;
+
+import de.mindscan.latentiron.crawler.MetaDataTrigramCountCrawler;
 import picocli.CommandLine;
 
 /**
@@ -32,7 +37,20 @@ import picocli.CommandLine;
  */
 public class MetadataIndexHFBCompilerMain {
 
-    public void run( MetadataIndexHFBCompilerParameters metadataIndexCompilerParameters ) {
+    public void run( MetadataIndexHFBCompilerParameters parameters ) {
+        Path crawlFolder = parameters.getCrawlFolder();
+        Path indexFolder = parameters.getIndexFolder();
+
+        Deque<Path> filesToBeIndexed = new ArrayDeque<Path>();
+
+        MetaDataTrigramCountCrawler metadataTrigramCrawler = new MetaDataTrigramCountCrawler();
+        metadataTrigramCrawler.crawl( filesToBeIndexed::add, crawlFolder );
+
+        System.out.println( String.format( "%d trigrams found for hfb compilation.", filesToBeIndexed.size() ) );
+
+        // TODO: build the index.
+        // HFBFilterIndexBuilder indexBuilder = new HFBFilterIndexBuilder();
+        // indexBuilder.buildIndex( filesToBeIndexed, crawlFolder, indexFolder );
 
     }
 
