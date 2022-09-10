@@ -44,7 +44,7 @@ import picocli.CommandLine;
  *    - maybe use first 4k hash value / to identify move op etc.
  *    - also simple filename / filesize are also good indicators
  * 3. Build File Metadata index and inverse file metadata index
- * 
+ * 4. Compile the HFBs for the metadata
  * 
  * --------------------------------------------------------
  * Use metadata index as base for content/document labeling
