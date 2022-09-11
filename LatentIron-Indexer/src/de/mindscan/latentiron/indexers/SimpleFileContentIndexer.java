@@ -28,6 +28,8 @@ package de.mindscan.latentiron.indexers;
 import java.nio.file.Path;
 import java.util.Deque;
 
+import de.mindscan.latentiron.classifiers.Classifier;
+import de.mindscan.latentiron.classifiers.MediaFileClassifier;
 import de.mindscan.latentiron.document.DocumentId;
 import de.mindscan.latentiron.document.DocumentIdFactory;
 import de.mindscan.latentiron.document.DocumentMetadata;
@@ -40,6 +42,7 @@ import de.mindscan.latentiron.index.LabelDataDatabaseIndex;
 public class SimpleFileContentIndexer implements FileContentIndexer {
 
     private LabelDataDatabaseIndex databaseIndex;
+    private Classifier classifier;
 
     /** 
      * {@inheritDoc}
@@ -52,6 +55,7 @@ public class SimpleFileContentIndexer implements FileContentIndexer {
         databaseIndex.setLabelDataSourcedataFolder( crawlFolder );
 
         // do we need Classifers?
+        setClassifier( new MediaFileClassifier() );
 
         databaseIndex.init();
 
@@ -75,27 +79,23 @@ public class SimpleFileContentIndexer implements FileContentIndexer {
 
     }
 
+    private void setClassifier( Classifier classifier ) {
+        this.classifier = classifier;
+    }
+
+    public Classifier getClassifier() {
+        return classifier;
+    }
+
     private void updateIndexWithSingleFile( Path fileToIndex, Path crawlFolder, Path indexFolder ) {
         DocumentId documentId = DocumentIdFactory.createDocumentID( fileToIndex, crawlFolder );
         DocumentMetadata documentMetaData = DocumentMetadataFactory.createDocumentLabelAndMetadata( documentId, fileToIndex );
 
-        // Create a document meta data object
-
         // add some metadata labels
-        // file.type (image, video, data, image.screenshot)
-        // file.date
-        // file.time
-        // file.checksum / content checksum
-        // file.timestamp
-        // file.originalname
-        // file.originaltimestamp
-        // file.createddate
-        // file.modifieddate
-        // 
-        // document.key
+        // Still Todo: document.key
 
-        // getClassifier.classify(documentid, documentmetadata, filetoindex);
-        // getClassifier,classify(documentid, documentmetadata, uniqueWordlist);
+        getClassifier().classify( documentId, documentMetaData, fileToIndex );
+        // getClassifier().classify(documentid, documentmetadata, uniqueWordlist);
 
         // save the meta data object to disk
         databaseIndex.getMetadataCache().addDocumentMetadata( documentId, documentMetaData );
