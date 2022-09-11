@@ -36,8 +36,6 @@ import de.mindscan.latentiron.index.trigram.InverseMetadataTrigramIndex;
  */
 public class LabelDataDatabaseIndex {
 
-    private Path indexFolder;
-
     private final MetadataCache theMetadataCache;
     private final InverseMetadataTrigramIndex theInverseMetadataTrigramIndex;
     private final InverseMetadataHFBFilterIndex theInverseMetadataHFBFilterIndex;
@@ -52,7 +50,6 @@ public class LabelDataDatabaseIndex {
      * @param indexFolder
      */
     public LabelDataDatabaseIndex( Path indexFolder ) {
-        this.indexFolder = indexFolder;
         theMetadataCache = new MetadataCache( indexFolder );
         theInverseMetadataTrigramIndex = new InverseMetadataTrigramIndex( indexFolder );
         theInverseMetadataHFBFilterIndex = new InverseMetadataHFBFilterIndex( indexFolder );
