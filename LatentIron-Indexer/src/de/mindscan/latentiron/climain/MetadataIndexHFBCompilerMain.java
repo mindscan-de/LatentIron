@@ -30,6 +30,7 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 
 import de.mindscan.latentiron.crawler.MetaDataTrigramCountCrawler;
+import de.mindscan.latentiron.indexers.MetadataTrigramReferencesToHFBFilterBuilder;
 import picocli.CommandLine;
 
 /**
@@ -48,9 +49,9 @@ public class MetadataIndexHFBCompilerMain {
 
         System.out.println( String.format( "%d trigrams found for hfb compilation.", filesToBeIndexed.size() ) );
 
-        // TODO: build the index.
-        // HFBFilterIndexBuilder indexBuilder = new HFBFilterIndexBuilder();
-        // indexBuilder.buildIndex( filesToBeIndexed, crawlFolder, indexFolder );
+        // build / compile each hfb-filter from the inverse metadata index.
+        MetadataTrigramReferencesToHFBFilterBuilder hfbFilterBuilder = new MetadataTrigramReferencesToHFBFilterBuilder();
+        hfbFilterBuilder.buildIndex( filesToBeIndexed, crawlFolder, indexFolder );
 
     }
 
