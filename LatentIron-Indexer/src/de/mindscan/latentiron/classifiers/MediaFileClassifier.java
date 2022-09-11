@@ -47,6 +47,9 @@ public class MediaFileClassifier implements Classifier {
      */
     @Override
     public void classify( DocumentId documentId, DocumentMetadata documentMetaData, Path fileToIndex ) {
+
+        // classify: file.type (image, video, data, image.screenshot)
+
         if (commonImageFileMatcher.matches( fileToIndex )) {
             documentMetaData.addMetadata( CommonLabelNames.FILE_TYPE, "image" );
         }
@@ -57,8 +60,13 @@ public class MediaFileClassifier implements Classifier {
             documentMetaData.addMetadata( CommonLabelNames.FILE_TYPE, "unknown" );
         }
 
+        // Override if screenshot
+        String filename = fileToIndex.getFileName().toString();
+        if (filename.toLowerCase().startsWith( "screenshot" )) {
+            documentMetaData.addMetadata( CommonLabelNames.FILE_TYPE, "image.screenshot" );
+        }
+
         // TODO
-        // file.type (image, video, data, image.screenshot)
         // file.date
         // file.time
         // file.checksum / content checksum
