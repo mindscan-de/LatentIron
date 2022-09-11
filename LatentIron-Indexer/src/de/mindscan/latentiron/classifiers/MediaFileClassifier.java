@@ -25,9 +25,12 @@
  */
 package de.mindscan.latentiron.classifiers;
 
+import java.nio.file.FileSystems;
 import java.nio.file.Path;
+import java.nio.file.PathMatcher;
 import java.util.List;
 
+import de.mindscan.latentiron.document.CommonLabelNames;
 import de.mindscan.latentiron.document.DocumentId;
 import de.mindscan.latentiron.document.DocumentMetadata;
 
@@ -36,11 +39,34 @@ import de.mindscan.latentiron.document.DocumentMetadata;
  */
 public class MediaFileClassifier implements Classifier {
 
+    private final PathMatcher commonVideoFileMatcher = FileSystems.getDefault().getPathMatcher( "glob:**.{webm,mkv,mp4,mp2,mpeg,mpg,avi,ts,vob}" );
+    private final PathMatcher commonImageFileMatcher = FileSystems.getDefault().getPathMatcher( "glob:**.{webp,png,jpg,jpeg,gif}" );
+
     /** 
      * {@inheritDoc}
      */
     @Override
     public void classify( DocumentId documentId, DocumentMetadata documentMetaData, Path fileToIndex ) {
+        if (commonImageFileMatcher.matches( fileToIndex )) {
+            documentMetaData.addMetadata( CommonLabelNames.FILE_TYPE, "image" );
+        }
+        else if (commonVideoFileMatcher.matches( fileToIndex )) {
+            documentMetaData.addMetadata( CommonLabelNames.FILE_TYPE, "video" );
+        }
+        else {
+            documentMetaData.addMetadata( CommonLabelNames.FILE_TYPE, "unknown" );
+        }
+
+        // TODO
+        // file.type (image, video, data, image.screenshot)
+        // file.date
+        // file.time
+        // file.checksum / content checksum
+        // file.timestamp
+        // file.originalname
+        // file.originaltimestamp
+        // file.createddate
+        // file.modifieddate
 
     }
 
