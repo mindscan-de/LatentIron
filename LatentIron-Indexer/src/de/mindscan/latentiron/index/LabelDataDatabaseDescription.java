@@ -34,8 +34,21 @@ package de.mindscan.latentiron.index;
 public class LabelDataDatabaseDescription {
 
     private String databaseDescription;
+    private String databaseName;
     private String dataFolder;
     private String indexFolder;
+    private String databaseAuthor;
+
+    // private String createdDate;
+    // private String createdTime;
+    // private String createdTimestamp;
+
+    /**
+     * @param indexFolder
+     */
+    public LabelDataDatabaseDescription( String indexFolder ) {
+        // 
+    }
 
     // TODO save operation will store to index/label folder.
     // TODO load operation 

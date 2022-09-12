@@ -51,7 +51,9 @@ public class LabelDataDatabaseIndex {
      * @param indexFolder
      */
     public LabelDataDatabaseIndex( Path indexFolder ) {
-        theLabelDatabaseDescription = new LabelDataDatabaseDescription();
+        // TODO: actually we want to use the current file if Description is already available 
+        // otherwise we want to create a new LabelDatabaseDescription 
+        theLabelDatabaseDescription = new LabelDataDatabaseDescription( indexFolder.toAbsolutePath().toString() );
 
         theMetadataCache = new MetadataCache( indexFolder );
         theInverseMetadataTrigramIndex = new InverseMetadataTrigramIndex( indexFolder );
@@ -70,6 +72,7 @@ public class LabelDataDatabaseIndex {
      */
     public void init() {
         // TODO Create file and directory structure and such
+        // theLabelDatabaseDescription.setDescription( "New Label Database created." );
     }
 
     /**
@@ -77,6 +80,7 @@ public class LabelDataDatabaseIndex {
      */
     public void finish() {
         // TODO write current state of the Database and the DatabaseIndex
+        // theLabelDatabaseDescription.save()
     }
 
     /**
