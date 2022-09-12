@@ -35,6 +35,7 @@ public class LabelDataDatabaseDescription {
 
     private String databaseDescription;
     private String databaseName;
+    private String databaseVersion;
     private String dataFolder;
     private String indexFolder;
     private String databaseAuthor;
