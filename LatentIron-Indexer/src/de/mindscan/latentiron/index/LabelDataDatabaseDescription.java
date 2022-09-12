@@ -47,7 +47,10 @@ public class LabelDataDatabaseDescription {
      * @param indexFolder
      */
     public LabelDataDatabaseDescription( String indexFolder ) {
-        // 
+        this.indexFolder = indexFolder;
+        // actually the indexfolder is the one where we opened the database
+        // when we load it from disk it may or may not be at this position, when the index was last created.
+        // in case of a load operation, we may need to override with the constructor value.
     }
 
     // TODO save operation will store to index/label folder.
