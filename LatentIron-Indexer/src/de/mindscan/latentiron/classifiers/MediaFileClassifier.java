@@ -60,10 +60,14 @@ public class MediaFileClassifier implements Classifier {
             documentMetaData.addMetadata( CommonLabelNames.FILE_TYPE, "unknown" );
         }
 
-        // Override if screenshot
+        // some override if screenshot
         String filename = fileToIndex.getFileName().toString();
         if (filename.toLowerCase().startsWith( "screenshot" )) {
             documentMetaData.addMetadata( CommonLabelNames.FILE_TYPE, "image.screenshot" );
+
+            // TODO: 
+            // extract date and time for when screenshot was taken
+            // maybe provide this info as an orginal timestamp.
         }
 
         // TODO
