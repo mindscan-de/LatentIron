@@ -41,9 +41,15 @@ public class LabelDataDatabaseIndex {
     private final InverseMetadataTrigramIndex theInverseMetadataTrigramIndex;
     private final InverseMetadataHFBFilterIndex theInverseMetadataHFBFilterIndex;
 
-    // TODO what to continue next...
+    // TODO what to continue next... We want to create a content description for each file, with labels and such
     // private final ContentLabelCache theContentLabelCache;
     // private final InverseContentLabelTrigramIndex theInverseContentLabelTrigramIndex;
+
+    // TODO: we might also manage relations between files, like same place or same event
+
+    // TODO: we might want to support collections != labels
+    // TODO: might be built from queries of the data
+    // TODO: we might want to order them manually and persist this order in the collection
 
     // TODO: work with the meta data index and the inverse metadata index
 
