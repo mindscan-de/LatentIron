@@ -64,11 +64,14 @@ public class MediaFileClassifier implements Classifier {
         String filename = fileToIndex.getFileName().toString();
         if (filename.toLowerCase().startsWith( "screenshot" )) {
             documentMetaData.addMetadata( CommonLabelNames.FILE_TYPE, "image.screenshot" );
-
-            // TODO: 
-            // extract date and time for when screenshot was taken
-            // maybe provide this info as an orginal timestamp.
         }
+
+        // TODO: 8d should start with 19 or 20 5th is 0/1, 7 is 0,1,2,3
+        // 6d is [0..2][0..9][0..5][0..9][0..5][0..9] this pattern
+        // extract date and time for when screenshot was taken
+        // maybe provide this info as an orginal timestamp.
+        // screenshot_8d_6d.*\..*
+        // img_8d_6d.*\.*.*
 
         // TODO
         // file.date
