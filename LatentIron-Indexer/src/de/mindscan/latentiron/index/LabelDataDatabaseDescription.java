@@ -54,7 +54,33 @@ public class LabelDataDatabaseDescription {
         // in case of a load operation, we may need to override with the constructor value.
     }
 
-    // TODO save operation will store to index/label folder.
-    // TODO load operation 
+    public void setDatabaseDescription( String databaseDescription ) {
+        this.databaseDescription = databaseDescription;
+    }
 
+    public String getDatabaseDescription() {
+        return databaseDescription;
+    }
+
+    public void setDatabaseName( String databaseName ) {
+        this.databaseName = databaseName;
+    }
+
+    public String getDatabaseName() {
+        return databaseName;
+    }
+
+    public void save() {
+        // TODO save operation will store to index/label folder.
+        // probably use gson
+    }
+
+    public void load() {
+        // TODO load operation 
+        // probably use gson
+    }
+
+    public void loadUpdateIndexFoder() {
+        // probably use gson
+    }
 }
