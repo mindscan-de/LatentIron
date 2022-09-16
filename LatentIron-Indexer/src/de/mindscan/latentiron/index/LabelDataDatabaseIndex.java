@@ -78,7 +78,8 @@ public class LabelDataDatabaseIndex {
      */
     public void init() {
         // TODO Create file and directory structure and such
-        // theLabelDatabaseDescription.setDescription( "New Label Database created." );
+        theLabelDatabaseDescription.setDatabaseDescription( "New Unnamed LabelDatabase" );
+
     }
 
     /**
@@ -86,7 +87,7 @@ public class LabelDataDatabaseIndex {
      */
     public void finish() {
         // TODO write current state of the Database and the DatabaseIndex
-        // theLabelDatabaseDescription.save()
+        theLabelDatabaseDescription.save();
     }
 
     /**
