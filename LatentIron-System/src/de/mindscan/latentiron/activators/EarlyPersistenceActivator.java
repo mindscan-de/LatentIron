@@ -23,8 +23,9 @@
  * SOFTWARE.
  * 
  */
-package de.mindscan.latentiron.earlypersistence;
+package de.mindscan.latentiron.activators;
 
+import de.mindscan.latentiron.earlypersistence.EarlyPersistenceComponent;
 import de.mindscan.latentiron.startup.StartupParticipant;
 import de.mindscan.latentiron.startup.SystemServices;
 
