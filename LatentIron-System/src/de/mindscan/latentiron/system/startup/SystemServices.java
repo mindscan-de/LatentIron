@@ -23,15 +23,15 @@
  * SOFTWARE.
  * 
  */
-package de.mindscan.latentiron.startup;
+package de.mindscan.latentiron.system.startup;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import de.mindscan.latentiron.earlypersistence.BasePersistenceModule;
-import de.mindscan.latentiron.earlypersistence.EarlyPersistenceComponent;
 import de.mindscan.latentiron.framework.exceptions.NotYetImplemetedException;
 import de.mindscan.latentiron.framework.registry.FrameworkRegistry;
+import de.mindscan.latentiron.system.earlypersistence.BasePersistenceModule;
+import de.mindscan.latentiron.system.earlypersistence.EarlyPersistenceComponent;
 
 /**
  * As much as I dislike these Singletons, these are actually mockable and configurable objects in 

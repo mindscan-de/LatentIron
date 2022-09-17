@@ -23,7 +23,7 @@
  * SOFTWARE.
  * 
  */
-package de.mindscan.latentiron.startup;
+package de.mindscan.latentiron.system.startup;
 
 /**
  * TODO We will move this to framework startup when we removed the dependencies from system services. But for now

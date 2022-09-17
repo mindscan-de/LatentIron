@@ -2,7 +2,7 @@
  * 
  * MIT License
  *
- * Copyright (c) 2022 Maxim Gansert, Mindscan
+ * Copyright (c) 2021 Maxim Gansert, Mindscan
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,21 +23,26 @@
  * SOFTWARE.
  * 
  */
-package de.mindscan.latentiron.earlypersistence;
+package de.mindscan.latentiron.system.activators;
 
-import java.nio.file.Path;
-
-import de.mindscan.latentiron.persistence.PersistenceModule;
+import de.mindscan.latentiron.system.earlypersistence.EarlyPersistenceComponent;
+import de.mindscan.latentiron.system.startup.StartupParticipant;
+import de.mindscan.latentiron.system.startup.SystemServices;
 
 /**
  * 
  */
-public interface BasePersistenceModule extends PersistenceModule {
+public class EarlyPersistenceActivator implements StartupParticipant {
 
     /**
-     * @param stringValue
-     * @return
+     * @param systemServices
      */
-    Path evaluateAsPath( String stringValue );
+    @Override
+    public void start( SystemServices systemServices ) {
+        EarlyPersistenceComponent earlyPersistence = new EarlyPersistenceComponent();
+        earlyPersistence.initEarlyPersistence();
+        systemServices.setEarlyPersistence( earlyPersistence );
+
+    }
 
 }

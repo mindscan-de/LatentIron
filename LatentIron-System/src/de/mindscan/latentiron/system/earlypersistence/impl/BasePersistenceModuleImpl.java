@@ -23,15 +23,15 @@
  * SOFTWARE.
  * 
  */
-package de.mindscan.latentiron.earlypersistence.impl;
+package de.mindscan.latentiron.system.earlypersistence.impl;
 
 import java.nio.file.Path;
 import java.util.Collection;
 import java.util.function.Predicate;
 
-import de.mindscan.latentiron.earlypersistence.BasePersistenceModule;
-import de.mindscan.latentiron.earlypersistence.EarlyPersistenceComponent;
 import de.mindscan.latentiron.persistence.PersistenceModule;
+import de.mindscan.latentiron.system.earlypersistence.BasePersistenceModule;
+import de.mindscan.latentiron.system.earlypersistence.EarlyPersistenceComponent;
 
 /**
  * 

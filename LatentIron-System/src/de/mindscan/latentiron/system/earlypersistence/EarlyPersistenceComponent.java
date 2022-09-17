@@ -23,7 +23,7 @@
  * SOFTWARE.
  * 
  */
-package de.mindscan.latentiron.earlypersistence;
+package de.mindscan.latentiron.system.earlypersistence;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -31,8 +31,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Properties;
 
-import de.mindscan.latentiron.earlypersistence.impl.BasePersistenceModuleImpl;
 import de.mindscan.latentiron.persistence.PersistenceModuleRegistry;
+import de.mindscan.latentiron.system.earlypersistence.impl.BasePersistenceModuleImpl;
 
 /**
  * TODO: we want for each component maybe its own configuration file. But we want to provide an index, where to find
