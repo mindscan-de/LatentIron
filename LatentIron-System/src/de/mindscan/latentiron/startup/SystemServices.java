@@ -76,11 +76,11 @@ public class SystemServices {
         throw new NotYetImplemetedException( "No BasePersistence is available for '" + namespaceName + "'" );
     }
 
-    public void setProjectRegistry( FrameworkRegistry projectRegistry ) {
-        registerService( projectRegistry, FrameworkRegistry.class );
+    public void setFrameworkRegistry( FrameworkRegistry frameworkRegistry ) {
+        registerService( frameworkRegistry, FrameworkRegistry.class );
     }
 
-    public FrameworkRegistry getProjectRegistry() {
+    public FrameworkRegistry getFrameworkRegistry() {
         return getService( FrameworkRegistry.class );
     }
 
